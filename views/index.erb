@@ -1,8 +1,93 @@
 <html>
-  <head></head>
+  <head>
+
+    <style>
+      body {
+        background-color: #000;
+        color: #fff;
+        font-family: monospace;
+      }
+      main {
+        width: 500px;
+        margin: 0 auto;
+        margin-top: 50px;
+        text-align: center;
+        padding: 60px;
+        box-shadow: 1px 1px 50px #f4f4f4;
+        background-color: rgba(255,255,255,0.1);
+      }
+      input[type="text"] {
+        height: 50px;
+        width: 200px;
+        font-size: 30px;
+        color: #A29797;
+        font-weight: 200;
+        vertical-align: middle;
+        border-radius: 20px;
+        border: none;
+        box-shadow: 1px 1px 47px #ff0000;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+      input[type="text"]:focus {
+        outline: none;
+        border: none;
+      }
+      input[type="text"]:active {
+        outline: none;
+        border: none;
+      }
+      h1 {
+        border-bottom: 1px dashed #A07A7A;
+        padding-bottom: 20px;
+        font-family: monospace;
+        font-weight: 100;
+        margin-top: 40px;
+        letter-spacing: 10px;
+        font-size: 33px;
+      }
+      #secret_number {
+        font-size: 20px;
+        color: #868692;
+      }
+      span  {
+        color: #B93D3D;
+      }
+      input[type="submit"] {
+        background-color: #9E9E9E;
+        padding: 10px;
+        outline: none;
+        border-style: outset;
+        font-family: monospace;
+        font-size: 20px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: #FFFFFF;
+        text-shadow: 1px 1px 1px #000;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+      input[type="submit"]:hover {
+          background-color: #E8E8E8;
+          color: #C3C3C3;
+      }
+
+    </style>
+
+  </head>
   <body>
-    <p>
-      The SECRET NUMBER is <%= number %>
-    </p>
+    <main>
+
+      <h1> Web Guesser </h1>
+      <p id="secret_number"> <%= secret_message %> </p>
+
+      <form autocomplete="off">
+        <input type='text' name='guess' /> <br>
+        <input type='submit' value='Guess!' />
+      </form>
+
+      <p> <%= message %> </p>
+
+    </main>
   </body>
 </html>
