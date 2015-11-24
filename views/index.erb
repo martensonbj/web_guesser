@@ -2,11 +2,13 @@
   <head>
 
     <style>
+
       body {
-        background-color: #000;
+        background: <%= background_color %>;
         color: #fff;
         font-family: monospace;
       }
+
       main {
         width: 500px;
         margin: 0 auto;
@@ -14,8 +16,9 @@
         text-align: center;
         padding: 60px;
         box-shadow: 1px 1px 50px #f4f4f4;
-        background-color: rgba(255,255,255,0.1);
+        background-color: rgba(0,0,0,0.5);
       }
+
       input[type="text"] {
         height: 50px;
         width: 200px;
@@ -29,14 +32,17 @@
         margin-bottom: 20px;
         text-align: center;
       }
+
       input[type="text"]:focus {
         outline: none;
         border: none;
       }
+
       input[type="text"]:active {
         outline: none;
         border: none;
       }
+
       h1 {
         border-bottom: 1px dashed #A07A7A;
         padding-bottom: 20px;
@@ -46,13 +52,12 @@
         letter-spacing: 10px;
         font-size: 33px;
       }
+
       #secret_number {
         font-size: 20px;
-        color: #868692;
+        color: #CCC;
       }
-      span  {
-        color: #B93D3D;
-      }
+
       input[type="submit"] {
         background-color: #9E9E9E;
         padding: 10px;
@@ -67,6 +72,7 @@
         border-radius: 8px;
         cursor: pointer;
       }
+
       input[type="submit"]:hover {
           background-color: #E8E8E8;
           color: #C3C3C3;
@@ -85,8 +91,6 @@
         <input type='text' name='guess' /> <br>
         <input type='submit' value='Guess!' />
       </form>
-
-      <p> <%= message %> </p>
 
     </main>
   </body>

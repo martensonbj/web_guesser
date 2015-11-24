@@ -1,25 +1,41 @@
 require 'sinatra'
 require 'sinatra/reloader'
 
-number = rand(0..100)
+SECRET_NUMBER = rand(0..100)
 
 get '/' do
-  way_high = number + 5
-  secret_number = number
-  guess = params["guess"].to_i
-  if guess == 0
+  message = check_guess(params["guess"])
+  background_color = check_background_color(message)
+  erb :index, :locals =>  { :message => message,
+                          :secret_message => message,
+                          :background_color => background_color
+                          }
+end
+
+def check_guess(guess)
+  if guess == nil
     message = "No Guesses"
-  elsif guess == secret_number
-    secret_message = "The SECRET NUMBER is #{secret_number}"
-  elsif guess > secret_number && guess > secret_number+5
+  elsif guess.to_i == SECRET_NUMBER
+    message = "You Got It! The SECRET NUMBER is #{SECRET_NUMBER}"
+  elsif guess.to_i > SECRET_NUMBER && guess.to_i > SECRET_NUMBER+5
     message = "You guessed #{guess} --> WAY too high"
-  elsif guess > secret_number && guess < secret_number + 5
+  elsif guess.to_i > SECRET_NUMBER && guess.to_i < SECRET_NUMBER + 5
     message = "You guessed #{guess} --> Too high"
-  elsif guess < secret_number && guess < secret_number - 5
+  elsif guess.to_i < SECRET_NUMBER && guess.to_i < SECRET_NUMBER - 5
     message = "You guessed #{guess} --> WAY too low"
-  elsif guess < secret_number && guess > secret_number - 5
+  elsif guess.to_i < SECRET_NUMBER && guess.to_i > SECRET_NUMBER - 5
     message = "You guessed #{guess} --> Too low"
   end
+end
 
-  erb :index, :locals => {:number => number, :message => message, :secret_message => secret_message}
+def check_background_color(message)
+  if message.include?("No")
+    "black"
+  elsif message.include?("WAY")
+    "#FF0000"
+  elsif message.include?("Got")
+    "blue"
+  elsif message.include?("Too")
+    "pink"
+  end
 end
